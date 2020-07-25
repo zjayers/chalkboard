@@ -1,0 +1,33 @@
+{
+  "name": "chalkboard",
+  "version": "1.0.0",
+  "description": "A realtime drawing app using Socket IO",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "keywords": [
+    "drawing",
+    "socket io",
+    "javascript",
+    "socket",
+    "sockets",
+    "react",
+    "express",
+    "p5",
+    "mongoose",
+    "mongodb"
+  ],
+  "author": "Zach Ayers",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25"
+  }
+}
