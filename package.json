@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "build": "cd client && yarn build",
+    "prestart": "yarn build",
     "start": "cd server && yarn start:prod"
   },
   "private": true,
