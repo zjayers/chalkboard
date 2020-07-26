@@ -17,11 +17,11 @@ function App() {
       />
     );
   } else {
-    const PORT = process.env.PORT || 3000;
     const socket = openSocket(`https://frozen-woodland-67352.herokuapp.com/`, {
       query: `username=${username}`,
     });
-    return <Chalkboard username={username} socket={socket} />;
+
+    return <Chalkboard socket={socket} />;
   }
 }
 

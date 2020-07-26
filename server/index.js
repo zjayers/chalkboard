@@ -12,6 +12,18 @@ process.on("uncaughtException", (err) => {
 
 const app = require("./app");
 
+const userCache = [];
+
+app.get("/users", (req, res) => {
+  res.status(200).send(userCache);
+});
+
+setInterval(() => {
+  if (userCache.length > 0) {
+    userCache.shift();
+  }
+}, 300000);
+
 // START SERVER
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
@@ -22,7 +34,9 @@ const server = app.listen(PORT, () => {
 const io = socket(server);
 
 io.sockets.on("connection", (socket) => {
-  socket.broadcast.emit("new-user", socket.handshake.query["username"]);
+  const newUser = socket.handshake.query["username"];
+  userCache.push(newUser);
+  socket.broadcast.emit("new-user", newUser);
 
   // Watch for incoming socket connection mouse events
   socket.on("line", (data) => {

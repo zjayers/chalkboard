@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sketch from "react-p5";
 import "./Chalkboard.styles.scss";
 import Header from "../Header/Header";
 import ToolPalette from "../ToolPalette/ToolPalette";
 import UserPalette from "../UserPalette/UserPalette";
+import axios from "axios";
 
-const Chalkboard = ({ username, socket }) => {
+const Chalkboard = ({ socket }) => {
   const [color, setColor] = useState("#fff");
   const [tool, setTool] = useState("BRUSH");
-  const [users, setUsers] = useState([username.toUpperCase()]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("/users").then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
 
   socket.on("new-user", (data) => {
     if (users.indexOf(data.toUpperCase() === -1)) {
