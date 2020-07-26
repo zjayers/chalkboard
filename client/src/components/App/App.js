@@ -17,7 +17,8 @@ function App() {
       />
     );
   } else {
-    const socket = openSocket("http://localhost:3000", {
+    const PORT = process.env.PORT || 3000;
+    const socket = openSocket(`http://localhost:${PORT}`, {
       query: `username=${username}`,
     });
     return <Chalkboard username={username} socket={socket} />;
