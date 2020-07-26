@@ -1,7 +1,14 @@
 import React from "react";
-
-const UserPalette = () => {
-  return <div></div>;
+import "./UserPalette.styles.scss";
+const UserPalette = ({ users }) => {
+  return (
+    <div className="user-palette">
+      <h3>Users</h3>
+      {users.map((user) => (
+        <p key={user}>{user}</p>
+      ))}
+    </div>
+  );
 };
 
 export default UserPalette;
