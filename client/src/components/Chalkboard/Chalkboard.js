@@ -18,8 +18,8 @@ const Chalkboard = ({ socket }) => {
   }, []);
 
   socket.on("new-user", (data) => {
-    if (users.indexOf(data.toUpperCase() === -1)) {
-      setUsers([...users, data.toUpperCase()]);
+    if (users.indexOf(data) === -1) {
+      setUsers([...users, data]);
     }
   });
 
