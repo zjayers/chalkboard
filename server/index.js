@@ -22,7 +22,7 @@ setInterval(() => {
   if (userCache.length > 0) {
     userCache.shift();
   }
-}, 300000);
+}, 60000);
 
 // START SERVER
 const PORT = process.env.PORT || 3000;
